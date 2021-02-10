@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Authors : wdw17a Wyatt Witemeyer, [insert names/ids here]
+ *  Authors : wdw17a Wyatt Witemeyer, cgg20a Christa Greenwood, 
  *  Class  : CS374
  *  Task   : Box Project - BoxMaker
  *
