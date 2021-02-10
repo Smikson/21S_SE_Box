@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Author : wdw17a Wyatt Witemeyer, [insert names/ids here]
+ *  Author : wdw17a Wyatt Witemeyer, cgg20a Christa Greenwood, 
  *  Class  : CS374
  *  Task   : Box Project Testing - BoxMakerTest
  *
