@@ -14,8 +14,11 @@
 
 // BoxMaker
 public class BoxMaker {
+
+	public static final String theString = "SVGGGGGGGGGGGGGGGGGGGGGGSTUFF";
+
     public static void main(String[] args) {
     	// Outputs the SVG for the box
-        System.out.println("We need to replace this text with SVG line To make 6 boxes before Friday.");
+        System.out.println(theString);
     }
 }
