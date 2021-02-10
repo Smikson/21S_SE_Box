@@ -32,4 +32,9 @@ public class BoxMakerTest {
     public void test_02_blows_up() {
         new ArrayList<Object>().get(0);
     }
+
+    @Test
+    public void test_03_inString() {
+    	assertTrue(bm.theString.contains("SVG"));
+    }
 }
