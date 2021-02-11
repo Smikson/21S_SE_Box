@@ -35,6 +35,31 @@ public class BoxMakerTest {
 
     @Test
     public void test_03_inString() {
-    	assertTrue(bm.theString.contains("SVG"));
+    	assertTrue(bm.theString.contains("M 40.0 10.0"));
+    }
+	
+	@Test
+    public void test_04_inString() {
+    	assertTrue(bm.theString.contains("M 65.0 10.0"));
+    }
+	
+	@Test
+    public void test_05_inString() {
+    	assertTrue(bm.theString.contains("M 90.0 10.0"));
+    }
+	
+	@Test
+    public void test_06_inString() {
+    	assertTrue(bm.theString.contains("M 40.0 40.0"));
+    }
+	
+	@Test
+    public void test_07_inString() {
+    	assertTrue(bm.theString.contains("M 65.0 40.0"));
+    }
+	
+	@Test
+    public void test_08_inString() {
+    	assertTrue(bm.theString.contains("M 90.0 40.0"));
     }
 }
