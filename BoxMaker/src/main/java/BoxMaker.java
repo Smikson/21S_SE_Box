@@ -15,7 +15,30 @@
 // BoxMaker
 public class BoxMaker {
 
-	public static final String theString = "SVGGGGGGGGGGGGGGGGGGGGGGSTUFF";
+	public static final String theString = "<?xml version='1.0' encoding='us-ascii'?>"
+						+ "<svg height=\"81.90mm\" viewBox=\"0.0 0.0 120.10 81.90\" width=\"120.10mm\" xmlns=\"http://www.w3.org/2000/svg\""
+						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\""
+						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
+						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">"
+						+ "<g id=\"square1\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 40.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "<g id=\"square2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 65.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "<g id=\"square3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 90.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "<g id=\"square4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 40.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "<g id=\"square5\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 65.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "<g id=\"square6\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">"
+						+ "<path d=\"M 90.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.20\" />"
+						+ "</g>"
+						+ "</svg>";
 
     public static void main(String[] args) {
     	// Outputs the SVG for the box
