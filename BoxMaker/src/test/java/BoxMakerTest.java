@@ -35,31 +35,36 @@ public class BoxMakerTest {
 
     @Test
     public void test_03_inString() {
-    	assertTrue(bm.theString.contains("M 40.0 10.0"));
+    	assertTrue(bm.theString.contains("<svg height=\"81.90mm\" viewBox=\"0.0 0.0 120.10 81.90\" width=\"120.10mm\""));
     }
-	
-	@Test
+
+    @Test
     public void test_04_inString() {
-    	assertTrue(bm.theString.contains("M 65.0 10.0"));
+    	assertTrue(bm.theString.contains("path d=\"M 40.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
     }
 	
 	@Test
     public void test_05_inString() {
-    	assertTrue(bm.theString.contains("M 90.0 10.0"));
+    	assertTrue(bm.theString.contains("path d=\"M 65.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
     }
 	
 	@Test
     public void test_06_inString() {
-    	assertTrue(bm.theString.contains("M 40.0 40.0"));
+    	assertTrue(bm.theString.contains("path d=\"M 90.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
     }
 	
 	@Test
     public void test_07_inString() {
-    	assertTrue(bm.theString.contains("M 65.0 40.0"));
+    	assertTrue(bm.theString.contains("path d=\"M 40.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
     }
 	
 	@Test
     public void test_08_inString() {
-    	assertTrue(bm.theString.contains("M 90.0 40.0"));
+    	assertTrue(bm.theString.contains("path d=\"M 65.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    }
+	
+	@Test
+    public void test_09_inString() {
+    	assertTrue(bm.theString.contains("path d=\"M 90.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
     }
 }
