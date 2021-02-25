@@ -46,13 +46,13 @@ public class BoxMaker {
     public static void main(String[] args) {
     	// Write the output String to an SVG file (catch any IOExceptions)
     	try {
-    		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
-			writer.write(theString);
-			writer.close();
-		}
-		// If we catch an IOException, print an error message
+		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
+		writer.write(theString);
+		writer.close();
+	}
+	// If we catch an IOException, print an error message
     	catch (IOException e) {
-			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
-		}
+		System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+	}
     }
 }
