@@ -6,8 +6,8 @@
  *  Compile: javac BoxMaker.java
  *  Run: java BoxMaker
  *
- *  Prints SVG line that will draw the components of a box to cut.
- *
+ *  Prints SVG line that will draw the components of a box to cut to an SVG file.
+ *  File is located at /BoxMaker/output.svg
  *  
  *
  ******************************************************************************/
