@@ -12,6 +12,9 @@
  *
  ******************************************************************************/
 
+// Import the input/output library for file writing
+import java.io.*;
+
 // BoxMaker
 public class BoxMaker {
 
@@ -41,7 +44,15 @@ public class BoxMaker {
 						+ "</svg>";
 
     public static void main(String[] args) {
-    	// Outputs the SVG for the box
-        System.out.println(theString);
+    	// Write the output String to an SVG file (catch any IOExceptions)
+    	try {
+    		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
+			writer.write(theString);
+			writer.close();
+		}
+		// If we catch an IOException, print an error message
+    	catch (IOException e) {
+			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+		}
     }
 }
