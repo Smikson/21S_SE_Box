@@ -1,0 +1,21 @@
+Glossary
+--------
+
+-SVG (Scalable Vector Graphics )
+    The file type output by the program containing the graphical information of the pieces for the box. Imported into a 
+    software like Adobe Illustrator to allow for laser cutting of pieces.
+      
+-The Program
+    The BoxMaker.java file to be run by the client. Generates an SVG box with the inputted specifications.
+    
+-File 
+     A digital document.
+    
+-Pieces 
+     Each discrete element of the box that has been cut out with the laser printer.
+     
+-Box 
+     Pieces put together.
+     
+-Laser printer 
+     Machine that uses a laser to cut materials. 
