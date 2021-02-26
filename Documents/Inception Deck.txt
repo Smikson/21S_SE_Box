@@ -33,7 +33,7 @@ Look at some risks.
     Input that is too large (Box outruns the wood).
     
 Size things up.
-    Rest of semester. 100%.
+    This project will take the rest of semester. 100%.
     
 Be clear on what has to give.
     Completely customizable dimensions.
