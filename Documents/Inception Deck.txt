@@ -1,0 +1,43 @@
+Why are we here?
+    To create a program that takes specifications and uses it to make boxes based off of those specifications. 
+    To provide the general public with an avenue to design their own beautiful, flawless boxes.
+   
+What’s our elevator pitch?
+    For woodworkers, Etsy sellers, or just your average Joe
+    who need a template for their laser-cut boxes,
+    the Wood Wizard
+    is an easy-to-use program
+    that takes a user’s specifications and creates the pattern for their custom box.
+    Unlike Festi Boxes (the website Dr. Reeves used to cut his example boxes),
+    our product constructs a seamless, fault-free template which you can be confident will cut a flawless box.
+  
+What would an ad for our product look like? 📦  
+    Slogan: “Box it up!” Benefit 1: Easy box making. Benefit 2: Pre-Designed boxes! Benefit 3: Designs made to scale! Benefit 4: Flawless designs!
+    
+What are we not going to do?
+    Break the laser.
+    Create an exhaustive program that accounts for any possible box shape.
+    Create boxes 📦 
+    We are not programming the laser printer itself.
+    
+Who’s in our neighborhood?
+    Maker Lab.
+    Client (Dr. Reeves).
+    
+Present a technical solution.
+    Run a Java file that will take input specifications from a console and then output those specifications to an SVG file which can then be imported into 
+    Adobe Illustrator so that a laser cutter can cut a box with those specifications.
+    
+Look at some risks.
+    Might not finish in time, might not account for everything the client wants,
+    Input that is too large (Box outruns the wood).
+    
+Size things up.
+    Rest of semester. 100%.
+    
+Be clear on what has to give.
+    Completely customizable dimensions.
+    
+Show our sponsors what this project is really going to take.
+    Time, lots of time.
+    Four months salary. 
