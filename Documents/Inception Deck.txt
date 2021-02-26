@@ -8,7 +8,7 @@ What’s our elevator pitch?
     the Wood Wizard
     is an easy-to-use program
     that takes a user’s specifications and creates the pattern for their custom box.
-    Unlike Festi Boxes (the website Dr. Reeves used to cut his example boxes),
+    Unlike Festi Boxes,
     our product constructs a seamless, fault-free template which you can be confident will cut a flawless box.
   
 What would an ad for our product look like? 📦  
