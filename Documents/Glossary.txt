@@ -15,7 +15,7 @@ Glossary
      Each discrete element of the box that has been cut out with the laser printer.
      
 -Box 
-     Pieces put together.
+     The aforementioned pieces put together.
      
 -Laser printer 
      Machine that uses a laser to cut materials. 
