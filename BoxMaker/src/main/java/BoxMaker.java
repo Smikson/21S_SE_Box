@@ -6,8 +6,8 @@
  *  Compile: javac BoxMaker.java
  *  Run: java BoxMaker
  *
- *  Prints SVG line that will draw the components of a box to cut to an SVG file.
- *  File is located at /BoxMaker/output.svg
+ *  Prints SVG line that will draw the components of a box to cut.
+ *
  *  
  *
  ******************************************************************************/
@@ -43,16 +43,23 @@ public class BoxMaker {
 						+ "</g>\n"
 						+ "</svg>";
 
+
+	// Function to return the SVG String that needs to be printed
+	public static String getSVG() {
+		return theString;
+	}
+
+	// Main method, what is run when the program is run
     public static void main(String[] args) {
     	// Write the output String to an SVG file (catch any IOExceptions)
     	try {
-		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
-		writer.write(theString);
-		writer.close();
-	}
-	// If we catch an IOException, print an error message
+    		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
+			writer.write(getSVG());
+			writer.close();
+		}
+		// If we catch an IOException, print an error message
     	catch (IOException e) {
-		System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
-	}
+			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+		}
     }
 }
