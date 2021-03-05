@@ -19,3 +19,9 @@ Glossary
      
 -Laser printer 
      Machine that uses a laser to cut materials. 
+
+-Wood Wizard
+     The product.
+     
+-Wood Wizards
+     The software engineers assigned to the project.
