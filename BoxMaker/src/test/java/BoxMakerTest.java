@@ -16,7 +16,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Rule;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 // BoxMakerTest
 public class BoxMakerTest {
@@ -101,5 +102,46 @@ public class BoxMakerTest {
     	}
     	// Make sure we have 6 paths
     	assertEquals(pathCount, 6);
+    }
+
+    // Five more tests to check the new user input function works as intended
+    @Test
+    public void test_12_userInput() {
+    	// Test we return true when the user's response is Y (without printing the prompts)
+    	String response = "Y";
+    	System.setIn(new ByteArrayInputStream(response.getBytes()));
+    	assertTrue(bm.filePrompt(false));
+    }
+
+    @Test
+    public void test_13_userInput() {
+    	// Test we return false when the user's response is N
+    	String response = "N";
+    	System.setIn(new ByteArrayInputStream(response.getBytes()));
+    	assertTrue(!bm.filePrompt(false));
+    }
+
+    @Test
+    public void test_14_userInput() {
+    	// Test we return true when the user's response is garbage for two lines then Y
+    	String response = "gar\nbage\nY";
+    	System.setIn(new ByteArrayInputStream(response.getBytes()));
+    	assertTrue(bm.filePrompt(false));
+    }
+
+    @Test
+    public void test_15_userInput() {
+    	// Test we return false when the user's response is garbage for two lines then N
+    	String response = "gar\nbage\nN";
+    	System.setIn(new ByteArrayInputStream(response.getBytes()));
+    	assertTrue(!bm.filePrompt(false));
+    }
+
+    @Test
+    public void test_16_userInput() {
+    	// Test we return true when the user's response is lowercase y
+    	String response = "y";
+    	System.setIn(new ByteArrayInputStream(response.getBytes()));
+    	assertTrue(bm.filePrompt(false));
     }
 }
