@@ -90,10 +90,10 @@ public class BoxMaker {
 	}
 
 	// Main method, what is run when the program is run
-    public static void main(String[] args) {
-    	// If desired by the user, write the SVG to the file
-    	if (filePrompt()) {
-    		// Write the output String to an SVG file (catch any IOExceptions)
+    	public static void main(String[] args) {
+    		// If desired by the user, write the SVG to the file
+    		if (filePrompt()) {
+    			// Write the output String to an SVG file (catch any IOExceptions)
 			try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
 				writer.write(getSVG());
