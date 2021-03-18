@@ -12,8 +12,9 @@
  *
  ******************************************************************************/
 
-// Import the input/output library for file writing
+// Import the input/output library for file writing and util for scanners and other data structures
 import java.io.*;
+import java.util.*;
 
 // BoxMaker
 public class BoxMaker {
@@ -49,17 +50,61 @@ public class BoxMaker {
 		return theString;
 	}
 
+	// Function to prompt the user if they want the SVG printed to the default file
+	public static boolean filePrompt(boolean displayPrompt) {
+		// Create the Scanner for user prompting
+		Scanner sc = new Scanner(System.in);
+
+		// Prompt the user for if they want the output file written to
+		if (displayPrompt) {
+			System.out.println("Would you like to the SVG file written to \"output.svg\"? [Y/N]");
+		}
+
+		// Loop until Y or N is entered
+		while (true) {
+			// Get the response
+			if (displayPrompt) {
+				System.out.print("Response: ");
+			}
+			String response = sc.nextLine().toUpperCase();
+
+			// If yes, return true
+			if (response.equals("Y")) {
+				return true;
+			}
+			// If no, return false
+			else if (response.equals("N")) {
+				return false;
+			}
+			// Otherwise it is an invalid response, get the prompt again
+			else {
+				if (displayPrompt) {
+					System.out.println("Invalid response. Please respond with only \"Y\" or \"N\"");
+				}
+			}
+		}
+	}
+	// By default display the prompt (only don't when testing)
+	public static boolean filePrompt() {
+		return filePrompt(true);
+	}
+
 	// Main method, what is run when the program is run
     public static void main(String[] args) {
-    	// Write the output String to an SVG file (catch any IOExceptions)
-    	try {
-    		BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
-			writer.write(getSVG());
-			writer.close();
-		}
-		// If we catch an IOException, print an error message
-    	catch (IOException e) {
-			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
-		}
+    	// If desired by the user, write the SVG to the file
+    	if (filePrompt()) {
+    		// Write the output String to an SVG file (catch any IOExceptions)
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
+				writer.write(getSVG());
+				writer.close();
+				System.out.println("Done");
+			}
+			// If we catch an IOException, print an error message
+			catch (IOException e) {
+				System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+			}
+    	}
+
     }
 }
