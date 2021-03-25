@@ -50,61 +50,70 @@ public class BoxMaker {
 		return theString;
 	}
 
-	// Function to prompt the user if they want the SVG printed to the default file
-	public static boolean filePrompt(boolean displayPrompt) {
-		// Create the Scanner for user prompting
-		Scanner sc = new Scanner(System.in);
-
-		// Prompt the user for if they want the output file written to
-		if (displayPrompt) {
-			System.out.println("Would you like to the SVG file written to \"output.svg\"? [Y/N]");
-		}
-
-		// Loop until Y or N is entered
+	// Function to prompt the user for a numeric (double) value -- used to specify dimensions
+	public static double promptDimension(Scanner sc, double lowerbound, double upperbound, boolean display) {
+		// Loop until valid response is given, store in "choice" to return
+		double choice;
 		while (true) {
-			// Get the response
-			if (displayPrompt) {
-				System.out.print("Response: ");
-			}
-			String response = sc.nextLine().toUpperCase();
-
-			// If yes, return true
-			if (response.equals("Y")) {
-				return true;
-			}
-			// If no, return false
-			else if (response.equals("N")) {
-				return false;
-			}
-			// Otherwise it is an invalid response, get the prompt again
-			else {
-				if (displayPrompt) {
-					System.out.println("Invalid response. Please respond with only \"Y\" or \"N\"");
+			// Make sure a double is entered in their reply
+			if (sc.hasNextDouble()) {
+				// Get the double and make sure its in the specified bound
+				choice = sc.nextDouble();
+				String extra = "";
+				extra = sc.nextLine();
+				if (choice >= lowerbound && choice <= upperbound && extra.trim().equals("")) {
+					break;
+				}
+				// If the double is not in the specified bound, display as such (when not testing)
+				else if (display) {
+					System.out.print("Please only a value within the requested bound: ");
 				}
 			}
+			// If an double was not entered, display as such (when not testing)
+			else {
+				if (display) {
+					System.out.print("Please enter a numeric value as a response: ");
+				}
+				sc.nextLine();
+			}
 		}
+		return choice;
 	}
 	// By default display the prompt (only don't when testing)
-	public static boolean filePrompt() {
-		return filePrompt(true);
+	public static double promptDimension(Scanner sc, double lowerbound, double upperbound) {
+		return promptDimension(sc, lowerbound, upperbound, true);
 	}
 
 	// Main method, what is run when the program is run
-    	public static void main(String[] args) {
-    		// If desired by the user, write the SVG to the file
-    		if (filePrompt()) {
-    			// Write the output String to an SVG file (catch any IOExceptions)
-			try {
-				BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
-				writer.write(getSVG());
-				writer.close();
-				System.out.println("Done");
-			}
-			// If we catch an IOException, print an error message
-			catch (IOException e) {
-				System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
-			}
-    	}
+    public static void main(String[] args) {
+    	// Scanner to control user input
+    	Scanner sc = new Scanner(System.in);
+
+    	/**************** Future: insert prompt for design selection ******************/
+
+    	// Prompt for the length, width, and height dimensions to be used for the box
+    	System.out.println("Enter the desired dimensions for your box (in inches), each within 3-10in:");
+    	System.out.print("Length: ");
+    	double length = promptDimension(sc, 3, 10);
+    	System.out.print("Width: ");
+    	double width = promptDimension(sc, 3, 10);
+    	System.out.print("Height: ");
+    	double height = promptDimension(sc, 3, 10);
+
+    	// Display the chosen dimensions so the user can double check what they specified
+    	System.out.println("Generating box with size: " + length + "in x " + width + "in x " + height + "in.");
+
+		// Write the output String to an SVG file (catch any IOExceptions)
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
+			writer.write(getSVG());
+			writer.close();
+			System.out.println("Done");
+		}
+		// If we catch an IOException, print an error message
+		catch (IOException e) {
+			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+		}
 
     }
 }
