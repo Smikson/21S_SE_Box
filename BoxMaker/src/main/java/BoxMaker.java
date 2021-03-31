@@ -45,7 +45,43 @@ public class BoxMaker {
 						+ "</svg>";
 
 
-	// Function to return the SVG String that needs to be printed
+	// Function to return the SVG String that needs to be printed -- NOTE: currently does not account for thinkness of wood
+	public static String getSVG(double length, double width, double height) {
+		// Setup
+		String ret = "<?xml version='1.0' encoding='us-ascii'?>\n"
+						+ "<svg height=\"11.00in\" viewBox=\"0.0 0.0 11.00in 17.00in\" width=\"17.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
+						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
+
+		// Base of the box
+		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 0.5 0.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n";
+
+		// All four walls of the box (first two will be the length x height, last to will be the width x height (each pair parallel))
+		ret += "<g id=\"wall1\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 4.0 0.5 h " + length + " v " + height + " h " + -length + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n";
+		ret += "<g id=\"wall2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 7.5 0.5 h " + length + " v " + height + " h " + -length + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n";
+
+		ret += "<g id=\"wall3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 0.5 5.0 h " + width + " v " + height + " h " + -width + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n";
+		ret += "<g id=\"wall4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 4.0 5.0 h " + width + " v " + height + " h " + -width + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n";
+
+		// Lid of the box (for now same as base of the box)
+		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 7.5 5.0 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		ret += "</g>\n" + "</svg>";
+
+		// Return the resulting String
+		return ret;
+	}
 	public static String getSVG() {
 		return theString;
 	}
@@ -92,13 +128,13 @@ public class BoxMaker {
     	/**************** Future: insert prompt for design selection ******************/
 
     	// Prompt for the length, width, and height dimensions to be used for the box
-    	System.out.println("Enter the desired dimensions for your box (in inches), each within 3-10in:");
+    	System.out.println("Enter the desired dimensions for your box (in inches), each within 1-3in:");
     	System.out.print("Length: ");
-    	double length = promptDimension(sc, 3, 10);
+    	double length = promptDimension(sc, 1, 3);
     	System.out.print("Width: ");
-    	double width = promptDimension(sc, 3, 10);
+    	double width = promptDimension(sc, 1, 3);
     	System.out.print("Height: ");
-    	double height = promptDimension(sc, 3, 10);
+    	double height = promptDimension(sc, 1, 3);
 
     	// Display the chosen dimensions so the user can double check what they specified
     	System.out.println("Generating box with size: " + length + "in x " + width + "in x " + height + "in.");
@@ -106,7 +142,7 @@ public class BoxMaker {
 		// Write the output String to an SVG file (catch any IOExceptions)
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
-			writer.write(getSVG());
+			writer.write(getSVG(length, width, height));
 			writer.close();
 			System.out.println("Done");
 		}
