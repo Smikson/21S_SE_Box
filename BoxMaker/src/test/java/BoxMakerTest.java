@@ -209,7 +209,7 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.5 0.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
     }
 
     @Test
@@ -218,7 +218,7 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 4.0 0.5 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
     }
 
     @Test
@@ -227,7 +227,7 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 7.5 0.5 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
     }
 
     @Test
@@ -236,7 +236,7 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.5 5.0 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
     }
 
     @Test
@@ -245,6 +245,52 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 4.0 5.0 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+    }
+
+    @Test
+    public void test_27_inString() {
+    	// Using 2.0 x 2.5 x 3.0 dimensions, check that the top of the box has the correct values
+    	double length = 2.0;
+    	double width = 2.5;
+    	double height = 3.0;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 5.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+    }
+
+    // Make sure to doesn't just work with 2, 2.5, and 3. Test a second set of values
+    @Test
+    public void test_28_inString() {
+    	// Using 3.7 x 4.25 x 5.0 dimensions, check that the base of the box has the correct values
+    	double length = 3.7;
+    	double width = 4.25;
+    	double height = 5.0;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+    }
+
+    @Test
+    public void test_29_inString() {
+    	// Using 3.7 x 4.25 x 5.0 dimensions, check that wall1 on the length of the box has the correct values
+    	double length = 3.7;
+    	double width = 4.25;
+    	double height = 5.0;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+    }
+
+    @Test
+    public void test_30_inString() {
+    	// Using 3.7 x 4.25 x 5.0 dimensions, check that wall2 on the length of the box has the correct values
+    	double length = 3.7;
+    	double width = 4.25;
+    	double height = 5.0;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+    }
+
+    @Test
+    public void test_31_inString() {
+    	// Using 3.7 x 4.25 x 5.0 dimensions, check that wall3 of the width of the box has the correct values
+    	double length = 3.7;
+    	double width = 4.25;
+    	double height = 5.0;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
     }
 }
