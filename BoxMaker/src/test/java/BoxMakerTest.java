@@ -34,40 +34,47 @@ public class BoxMakerTest {
         new ArrayList<Object>().get(0);
     }
 
-    // Tests to check that the String contains our strict paths
+    // Tests for essential, static values in String
     @Test
     public void test_03_inString() {
-    	assertTrue(bm.getSVG().contains("<svg height=\"81.90mm\" viewBox=\"0.0 0.0 120.10 81.90\" width=\"120.10mm\""));
+		// Checks size of template with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<svg height=\"11.00in\" viewBox=\"0.0 0.0 17.0 11.0\" width=\"17.00in\""));
     }
 
     @Test
     public void test_04_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 40.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+		// Checks starting point for base path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.25 0.25"));
     }
 	
 	@Test
     public void test_05_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 65.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    	// Checks starting point for wall1 path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.5 0.25"));
     }
 	
 	@Test
     public void test_06_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 90.0 10.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    	// Checks starting point for wall2 path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.75 0.25"));
     }
 	
 	@Test
     public void test_07_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 40.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    	// Checks starting point for wall3 path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.25 5.5"));
     }
 	
 	@Test
     public void test_08_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 65.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    	// Checks starting point for wall4 path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.5 5.5"));
     }
 	
 	@Test
     public void test_09_inString() {
-    	assertTrue(bm.getSVG().contains("path d=\"M 90.0 40.0 h 20.0 v 20.0 h -20.0 v -20.0\""));
+    	// Checks starting point for top path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.75 5.5"));
     }
 
     // Class Extra Unit Tests
@@ -75,7 +82,8 @@ public class BoxMakerTest {
     public void test_10_unitTest() {
     	// Make sure we're moving somwhere in each path
     	String lines[];
-    	lines = bm.getSVG().split("\n");
+	// Inputs random length, width, and height values
+    	lines = bm.getSVG(2.0,2.0,2.0).split("\n");
     	boolean passed = true;
     	for (int i = 0; i < lines.length; i++) {
     		if (lines[i].contains("path d=")) {
@@ -93,7 +101,8 @@ public class BoxMakerTest {
     public void test_11_unitTest() {
     	// Test if we are drawing 6 total sides, 6 paths
     	String lines[];
-    	lines = bm.getSVG().split("\n");
+	// Inputs random length, width, and height values
+    	lines = bm.getSVG(2.0,2.0,2.0).split("\n");
     	int pathCount = 0;
     	for (int i = 0; i < lines.length; i++) {
     		if (lines[i].contains("path d=")) {
