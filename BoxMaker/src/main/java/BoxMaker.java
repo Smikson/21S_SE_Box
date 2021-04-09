@@ -52,6 +52,84 @@ public class BoxMaker {
 		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
 		ret += "<path d=\"M 10.75 5.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
 		ret += "</g>\n" + "</svg>";
+		
+		/* Prototype box with fingers
+		
+		double depth = 0.125;
+		
+		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 0.375 0.375 h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		   ret += "</g>\n";
+
+		// All four walls of the box (first two will be the length x height, last to will be the width x height (each pair parallel))
+		ret += "<g id=\"wall1\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 5.625 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   ret += "</g>\n";
+			   
+		ret += "<g id=\"wall2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 10.875 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   ret += "</g>\n";
+
+		ret += "<g id=\"wall3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 0.375 5.5 h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   ret += "</g>\n";
+			   
+		ret += "<g id=\"wall4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 5.625 5.5 h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   ret += "</g>\n";
+
+		// Lid of the box (for now same as base of the box)
+		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M 10.875 5.5 h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+		   ret += "</g>\n" + "</svg>";*/
 
 		// Return the resulting String
 		return ret;
