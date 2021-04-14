@@ -19,6 +19,7 @@ What are we not going to do?
     Create an exhaustive program that accounts for any possible box shape.
     Create boxes 📦 
     We are not programming the laser printer itself.
+    We are not creating boxes greater than 5" x 5" x 5".
     
 Who’s in our neighborhood?
     Maker Lab.
