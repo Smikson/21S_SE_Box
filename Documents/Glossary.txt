@@ -6,7 +6,7 @@ Glossary
     software like Adobe Illustrator to allow for laser cutting of pieces.
       
 -The Program
-    The BoxMaker.java file to be run by the client. Generates an SVG box with the inputted specifications.
+     The BoxMaker.java file to be run by the client. Generates an SVG box with the inputted specifications.
     
 -File 
      A digital document.
@@ -15,7 +15,7 @@ Glossary
      Each discrete element of the box that has been cut out with the laser printer.
      
 -Box 
-     The aforementioned pieces put together.
+     The aforementioned pieces put together. This box can be a cube or a rectangular prism no larger than 5" x 5" x 5".
      
 -Laser printer 
      Machine that uses a laser to cut materials. 
@@ -25,3 +25,9 @@ Glossary
      
 -Wood Wizards
      The software engineers assigned to the project.
+     
+-Fingers
+     The interlocking notches on each side of the box which connect to form the box.
+     
+-Project
+     The product and its documentation that will be delivered to the customer.
