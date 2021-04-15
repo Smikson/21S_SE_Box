@@ -28,7 +28,7 @@ public class BoxMaker {
 						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
 						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
 
-		// Base of the box
+		/*// Base of the box
 		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
 		ret += "<path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
 		ret += "</g>\n";
@@ -51,9 +51,9 @@ public class BoxMaker {
 		// Lid of the box (for now same as base of the box)
 		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
 		ret += "<path d=\"M 10.75 5.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n" + "</svg>";
+		ret += "</g>\n" + "</svg>";*/
 		
-		/* Prototype box with fingers
+		//Prototype box with fingers
 		
 		double depth = 0.125;
 		
@@ -129,7 +129,7 @@ public class BoxMaker {
 			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
 			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
 			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		   ret += "</g>\n" + "</svg>";*/
+		   ret += "</g>\n" + "</svg>";
 
 		// Return the resulting String
 		return ret;
