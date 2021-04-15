@@ -27,34 +27,8 @@ public class BoxMaker {
 						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
 						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
 						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
-
-		/*// Base of the box
-		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n";
-
-		// All four walls of the box (first two will be the length x height, last to will be the width x height (each pair parallel))
-		ret += "<g id=\"wall1\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 5.5 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n";
-		ret += "<g id=\"wall2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 10.75 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n";
-
-		ret += "<g id=\"wall3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 0.25 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n";
-		ret += "<g id=\"wall4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 5.5 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n";
-
-		// Lid of the box (for now same as base of the box)
-		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
-		ret += "<path d=\"M 10.75 5.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
-		ret += "</g>\n" + "</svg>";*/
 		
-		//Prototype box with fingers
-		
+		// Prototype box with fingers
 		double depth = 0.125;
 		
 		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
@@ -66,7 +40,7 @@ public class BoxMaker {
 			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
 			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
 			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 		   ret += "</g>\n";
 
 		// All four walls of the box (first two will be the length x height, last to will be the width x height (each pair parallel))
@@ -79,7 +53,7 @@ public class BoxMaker {
 			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
 			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
 			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 			   ret += "</g>\n";
 			   
 		ret += "<g id=\"wall2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
@@ -91,7 +65,7 @@ public class BoxMaker {
 			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
 			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
 			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 			   ret += "</g>\n";
 
 		ret += "<g id=\"wall3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
@@ -103,7 +77,7 @@ public class BoxMaker {
 			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
 			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
 			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 			   ret += "</g>\n";
 			   
 		ret += "<g id=\"wall4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
@@ -115,7 +89,7 @@ public class BoxMaker {
 			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
 			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
 			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 			   ret += "</g>\n";
 
 		// Lid of the box (for now same as base of the box)
@@ -128,7 +102,7 @@ public class BoxMaker {
 			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
 			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
 			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
-			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.001\" />\n";
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 		   ret += "</g>\n" + "</svg>";
 
 		// Return the resulting String
