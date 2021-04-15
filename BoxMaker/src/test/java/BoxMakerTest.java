@@ -37,44 +37,44 @@ public class BoxMakerTest {
     // Tests for essential, static values in String
     @Test
     public void test_03_inString() {
-		// Checks size of template with random length, width, and height values
+	// Checks size of template with random length, width, and height values
     	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<svg height=\"11.00in\" viewBox=\"0.0 0.0 17.0 11.0\" width=\"17.00in\""));
     }
 
     @Test
     public void test_04_inString() {
-		// Checks starting point for base path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.25 0.25"));
+	// Checks starting point for base path with random length, width, and height values
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.375 0.375"));
     }
 	
 	@Test
     public void test_05_inString() {
     	// Checks starting point for wall1 path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.5 0.25"));
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.625 0.25"));
     }
 	
 	@Test
     public void test_06_inString() {
     	// Checks starting point for wall2 path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.75 0.25"));
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.875 0.25"));
     }
 	
 	@Test
     public void test_07_inString() {
     	// Checks starting point for wall3 path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.25 5.5"));
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 0.375 5.5"));
     }
 	
 	@Test
     public void test_08_inString() {
     	// Checks starting point for wall4 path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.5 5.5"));
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 5.625 5.5"));
     }
 	
 	@Test
     public void test_09_inString() {
     	// Checks starting point for top path with random length, width, and height values
-    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.75 5.5"));
+    	assertTrue(bm.getSVG(2.0,2.0,2.0).contains("<path d=\"M 10.875 5.625"));
     }
 
     // Class Extra Unit Tests
@@ -212,13 +212,22 @@ public class BoxMakerTest {
     }
 
     // Tests for the getSVG with specified length width and height values
-    @Test
+   @Test
     public void test_22_inString() {
     	// Using 2.0 x 2.5 x 3.0 dimensions, check that the base of the box has the correct values
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+	double depth = 0.125;
+	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.375 0.375 h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\""));
     }
 
     @Test
@@ -227,7 +236,16 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.625 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -236,7 +254,16 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.875 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -245,7 +272,16 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.375 5.5 h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -254,7 +290,16 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.625 5.5 h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -263,7 +308,16 @@ public class BoxMakerTest {
     	double length = 2.0;
     	double width = 2.5;
     	double height = 3.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 5.5 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.875 5.625 h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\""));
     }
 
     // Make sure to doesn't just work with 2, 2.5, and 3. Test a second set of values
@@ -273,7 +327,16 @@ public class BoxMakerTest {
     	double length = 3.7;
     	double width = 4.25;
     	double height = 5.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 0.25 h " + length + " v " + width + " h " + -length + " v " + -width + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.375 0.375 h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\""));
     }
 
     @Test
@@ -282,7 +345,16 @@ public class BoxMakerTest {
     	double length = 3.7;
     	double width = 4.25;
     	double height = 5.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.5 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 5.625 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -291,7 +363,16 @@ public class BoxMakerTest {
     	double length = 3.7;
     	double width = 4.25;
     	double height = 5.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.75 0.25 h " + length + " v " + height + " h " + -length + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 10.875 0.25 h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 
     @Test
@@ -300,6 +381,15 @@ public class BoxMakerTest {
     	double length = 3.7;
     	double width = 4.25;
     	double height = 5.0;
-    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.25 5.5 h " + width + " v " + height + " h " + -width + " v " + -height + "\""));
+	double depth = 0.125;
+    	assertTrue(bm.getSVG(length, width, height).contains("path d=\"M 0.375 5.5 h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\""));
     }
 }
