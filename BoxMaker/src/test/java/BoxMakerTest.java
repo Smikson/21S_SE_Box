@@ -480,4 +480,96 @@ public class BoxMakerTest {
     	// Make sure we passed
     	assertTrue(passed);
     }
+
+    @Test
+    public void test_37_inString() {
+    	// Test if wall3 has the correct stroke width
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getSVG(2.0,2.0,2.0).split("\n");
+    	boolean passed = false;
+    	for (int i = 0; i < lines.length; i++) {
+    		// If it is the wall3, make sure its stroke length is 0.0000138889, the number of inches in 0.001pt (required for laser to cut)
+    		if (lines[i].contains("path d=\"M 0.375 5.5")) {
+    			passed = lines[i].contains("stroke-width=\"0.0000138889\"");
+    		}
+    	}
+    	// Make sure we passed
+    	assertTrue(passed);
+    }
+
+    @Test
+    public void test_38_inString() {
+    	// Test if wall4 has the correct stroke width
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getSVG(2.0,2.0,2.0).split("\n");
+    	boolean passed = false;
+    	for (int i = 0; i < lines.length; i++) {
+    		// If it is the wall4, make sure its stroke length is 0.0000138889, the number of inches in 0.001pt (required for laser to cut)
+    		if (lines[i].contains("path d=\"M 5.625 5.5")) {
+    			passed = lines[i].contains("stroke-width=\"0.0000138889\"");
+    		}
+    	}
+    	// Make sure we passed
+    	assertTrue(passed);
+    }
+
+    @Test
+    public void test_39_inString() {
+    	// Test if the top of the box has the correct stroke width
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getSVG(2.0,2.0,2.0).split("\n");
+    	boolean passed = false;
+    	for (int i = 0; i < lines.length; i++) {
+    		// If it is the top, make sure its stroke length is 0.0000138889, the number of inches in 0.001pt (required for laser to cut)
+    		if (lines[i].contains("path d=\"M 10.875 5.625")) {
+    			passed = lines[i].contains("stroke-width=\"0.0000138889\"");
+    		}
+    	}
+    	// Make sure we passed
+    	assertTrue(passed);
+    }
+
+    // Five more tests to check the pompt for inserts function works as intended
+    @Test
+    public void test_40_userInput() {
+    	// Test we return true when the user's response is Y (without printing the prompts)
+    	String response = "Y";
+    	Scanner sc = new Scanner(response);
+    	assertTrue(bm.promptInserts(sc, false));
+    }
+
+    @Test
+    public void test_41_userInput() {
+    	// Test we return false when the user's response is N
+    	String response = "N";
+    	Scanner sc = new Scanner(response);
+    	assertTrue(!bm.promptInserts(sc, false));
+    }
+
+    @Test
+    public void test_42_userInput() {
+    	// Test we return true when the user's response is garbage for two lines then Y
+    	String response = "gar\nbage\nY";
+    	Scanner sc = new Scanner(response);
+    	assertTrue(bm.promptInserts(sc, false));
+    }
+
+    @Test
+    public void test_43_userInput() {
+    	// Test we return false when the user's response is garbage for two lines then N
+    	String response = "gar\nbage\nN";
+    	Scanner sc = new Scanner(response);
+    	assertTrue(!bm.promptInserts(sc, false));
+    }
+
+    @Test
+    public void test_44_userInput() {
+    	// Test we return true when the user's response is lowercase y
+    	String response = "y";
+    	Scanner sc = new Scanner(response);
+    	assertTrue(bm.promptInserts(sc, false));
+    }
 }
