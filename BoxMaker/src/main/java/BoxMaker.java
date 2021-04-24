@@ -19,8 +19,13 @@ import java.util.*;
 // BoxMaker
 public class BoxMaker {
 
-	// Function to return the SVG String that needs to be printed -- NOTE: currently does not account for thinkness of wood
+	// Function to return the SVG String that needs to be printed
 	public static String getSVG(double length, double width, double height) {
+		// If a single dimension is above 5 inches, use the relative SVG
+		if (length > 5 || width > 5 || height > 5) {
+			return getRelativeSVG(length, width, height);
+		}
+
 		// Setup
 		String ret = "<?xml version='1.0' encoding='us-ascii'?>\n"
 						+ "<svg height=\"11.00in\" viewBox=\"0.0 0.0 17.0 11.0\" width=\"17.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
@@ -104,6 +109,106 @@ public class BoxMaker {
 			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
 			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
 		   ret += "</g>\n" + "</svg>";
+
+		// Return the resulting String
+		return ret;
+	}
+
+	// Function to return the SVG String that needs to be printed when above 5 inches -- relative spacing
+	public static String getRelativeSVG(double length, double width, double height) {
+		// Setup
+		String ret = "<?xml version='1.0' encoding='us-ascii'?>\n"
+						+ "<svg height=\"55.00in\" viewBox=\"0.0 0.0 85.0 55.0\" width=\"85.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
+						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
+		
+		// Prototype box with fingers
+		double depth = 0.125;
+		double x = 0.375;
+		double y = 0.375;
+		
+		ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			   ret += "</g>\n";
+
+		// All four walls of the box (first two will be the length x height, last to will be the width x height (each pair parallel))
+		x += length + 0.5;
+		y = 0.25;
+		ret += "<g id=\"wall1\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			   ret += "</g>\n";
+		
+		x += length + 0.5;
+		ret += "<g id=\"wall2\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5
+			   + " v " + depth + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			   ret += "</g>\n";
+
+		x = 0.375;
+		y = 0.25 + (width > height? width : height) + 0.5;
+		ret += "<g id=\"wall3\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			   ret += "</g>\n";
+		
+		x += width + 0.5;
+		ret += "<g id=\"wall4\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (width-(depth*2))/5 + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5
+			   + " v " + depth + " h " + (width-(depth*2))/5 + " v " + (-depth) + " h " + (width-(depth*2))/5 + depth
+			   + " v " + height/6 + " h " + (-depth) + " v " + height/6 + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6 
+			   + " h " + depth + " v " + height/6 + " h " + (-depth) + " v " + height/6
+			   + " h " + -(width-(depth*2))/5 + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5
+			   + " v " + (-depth) + " h " + -(width-(depth*2))/5 + " v " + depth + " h " + -(width-(depth*2))/5 + (-depth)
+			   + " v " + (-height/6) + " h " + depth + " v " + (-height/6) + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6) 
+			   + " h " + (-depth) + " v " + (-height/6) + " h " + depth + " v " + (-height/6)
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			   ret += "</g>\n";
+
+		// Lid of the box (for now same as base of the box)
+		x += width + 0.5;
+		y = 0.375 + (width > height? width : height) + 0.5;
+		ret += "<g id=\"top\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+		ret += "<path d=\"M " + x + " " + y + " h " + (length-(depth*2))/5 + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (-depth) + " h " + (length-(depth*2))/5 + " v " + depth + " h " + (length-(depth*2))/5
+			   + " v " + (width-(depth*2))/5 + " h " + depth + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5 + " h " + depth
+			   + " v " + (width-(depth*2))/5 + " h " + (-depth) + " v " + (width-(depth*2))/5
+			   + " h " + -(length-(depth*2))/5 + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + depth + " h " + -(length-(depth*2))/5 + " v " + (-depth) + " h " + -(length-(depth*2))/5
+			   + " v " + -(width-(depth*2))/5 + " h " + (-depth) + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5 + " h " + (-depth)
+			   + " v " + -(width-(depth*2))/5 + " h " + depth + " v " + -(width-(depth*2))/5
+			   + "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+		   	   ret += "</g>\n" + "</svg>";
 
 		// Return the resulting String
 		return ret;
@@ -214,16 +319,16 @@ public class BoxMaker {
     	Scanner sc = new Scanner(System.in);
 
     	// Prompt for the length, width, and height dimensions to be used for the box
-    	System.out.println("Enter the desired dimensions for your box (in inches), each within 2-5in:");
+    	System.out.println("Enter the desired dimensions for your box (in inches), each within 2-25in:");
     	System.out.print("Length: ");
-    	double length = promptDimension(sc, 2, 5);
+    	double length = promptDimension(sc, 2, 25);
     	System.out.print("Width: ");
-    	double width = promptDimension(sc, 2, 5);
+    	double width = promptDimension(sc, 2, 25);
     	System.out.print("Height: ");
-    	double height = promptDimension(sc, 2, 5);
+    	double height = promptDimension(sc, 2, 25);
 
     	// Prompt the user for if they want box inserts
-		System.out.println("Would you like to the SVG file written to \"output.svg\"? [Y/N]");
+		System.out.println("Do you want inserts (will show up in inserts.svg)? [Y/N]");
 		boolean inserts = promptInserts(sc);
 
 		// Prompt for the insert height desired
