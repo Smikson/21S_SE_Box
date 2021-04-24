@@ -331,20 +331,25 @@ public class BoxMaker {
 		System.out.println("Do you want inserts (will show up in inserts.svg)? [Y/N]");
 		boolean inserts = promptInserts(sc);
 
-		// Prompt for the insert height desired
-		System.out.println("What height would you like the inserts to be? 1-"+height+"in:");
-		System.out.print("Insert Height: ");
-		double insertHeight = promptDimension(sc, 1, height);
+		double insertHeight = 0;
+		double rows = 0;
+		double cols = 0;
+		if (inserts) {
+			// Prompt for the insert height desired
+			System.out.println("What height would you like the inserts to be? 1-"+height+"in:");
+			System.out.print("Insert Height: ");
+			insertHeight = promptDimension(sc, 1, height);
 
-		// Prompt for the number of rows
-		System.out.println("How many rows of sections do you want? 1-5:");
-		System.out.print("Rows: ");
-		int rows = promptInteger(sc, 1, 5);
+			// Prompt for the number of rows
+			System.out.println("How many rows of sections do you want? 1-5:");
+			System.out.print("Rows: ");
+			rows = promptInteger(sc, 1, 5);
 
-		// Prompt for the number of columns
-		System.out.println("How many columns of sections do you want? 1-5:");
-		System.out.print("Columns: ");
-		int cols = promptInteger(sc, 1, 5);
+			// Prompt for the number of columns
+			System.out.println("How many columns of sections do you want? 1-5:");
+			System.out.print("Columns: ");
+			cols = promptInteger(sc, 1, 5);
+		}
 
     	// Display the chosen dimensions so the user can double check what they specified
     	System.out.println("Generating box with size: " + length + "in x " + width + "in x " + height + "in.");
