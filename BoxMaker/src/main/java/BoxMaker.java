@@ -213,6 +213,70 @@ public class BoxMaker {
 		// Return the resulting String
 		return ret;
 	}
+	
+	// Function to return the SVG String with the box inserts that need to be printed.
+	public static String getInsertSVG(double length, double width, double height, double rows, double columns) {
+		// Setup
+		double depth = 0.125;
+		double widthInserts = columns-1;
+		double lengthInserts = rows-1;
+		double xPoint = 0.25;
+		double yPoint = 0.25;
+		
+		String ret = "<?xml version='1.0' encoding='us-ascii'?>\n"
+						+ "<svg height=\"11.00in\" viewBox=\"0.0 0.0 23.0 11.0\" width=\"23.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
+						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
+
+		// Inserts to make columns
+		for (int w=1; w<columns; w++)
+		{
+			ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+			ret += "<path d=\"M " + xPoint + " " + yPoint + " h " + (width-(depth*2)) + " v " + (height-(depth*2));
+			
+			for (int i=1; i<rows; i++)
+			{
+				ret += " h " + -((width-(depth*2)-(lengthInserts*depth))/rows)
+					+ " v " + -((height-(depth*2))/2) + " h " + -depth + " v " + ((height-(depth*2))/2);
+			}
+		    
+			ret += " h " + -((width-(depth*2)-(lengthInserts*depth))/rows) + " v " + -(height-(depth*2))
+				+ "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			ret += "</g>\n";
+			
+			xPoint += width+0.25;
+		}
+
+		xPoint = 0.25;
+		yPoint = 5.5;
+
+		// Inserts to make rows
+		for (int l=1; l<rows; l++)
+		{
+			// Length insert
+			ret += "<g id=\"base\" style=\"fill:none;stroke-linecap:round;stroke-linejoin:round;\">\n";
+			ret += "<path d=\"M " + xPoint + " " + yPoint;
+			
+			for (int i=1; i<columns; i++)
+			{
+				ret += " h " + ((length-(depth*2)-(widthInserts*depth))/columns)
+					+ " v " + ((height-(depth*2))/2) + " h " + depth + " v " + -((height-(depth*2))/2);
+			}
+				
+			ret += " h " + ((length-(depth*2)-(widthInserts*depth))/columns) + " v " + (height-(depth*2))
+				+ " h " + -(length-(depth*2)) + " v " + -(height-(depth*2))
+				+ "\" stroke=\"rgb(0,0,0)\" stroke-width=\"0.0000138889\" />\n";
+			ret += "</g>\n";
+			
+			xPoint += length+0.25;
+		}
+	
+		ret += "</svg>";
+
+		// Return the resulting String
+		return ret;
+	}
 
 	// Function to prompt the user for a numeric (double) value -- used to specify dimensions
 	public static double promptDimension(Scanner sc, double lowerbound, double upperbound, boolean display) {
@@ -367,6 +431,18 @@ public class BoxMaker {
 		// If we catch an IOException, print an error message
 		catch (IOException e) {
 			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");
+		}
+		
+		// Write the insert String to a new SVG files (catch any IOExceptions)
+		try {
+			BufferedWriter written = new BufferedWriter(new FileWriter("insert.svg"));
+			written.write(getInsertSVG(length, width, insertHeight, rows, cols));
+			written.close();
+			System.out.println("Done");
+		}
+		// If we catch an IOException, print an error message
+		catch (IOException e) {
+			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");	
 		}
 
     }
