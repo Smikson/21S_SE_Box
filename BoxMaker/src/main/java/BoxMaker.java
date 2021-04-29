@@ -261,7 +261,7 @@ public class BoxMaker {
 		}
 
 		xPoint = 0.25;
-		yPoint = 5.5;
+		yPoint = height+0.5;
 
 		// Inserts to make rows
 		for (int l=1; l<rows; l++)
