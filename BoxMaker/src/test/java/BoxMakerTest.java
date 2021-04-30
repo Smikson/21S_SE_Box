@@ -572,4 +572,84 @@ public class BoxMakerTest {
     	Scanner sc = new Scanner(response);
     	assertTrue(bm.promptInserts(sc, false));
     }
+
+    // Tests for inserts SVG
+    @Test
+    public void test_45_inInsertSVG() {
+    	// Make sure the regular version of the inserts has the correct setup
+    	assertTrue(bm.getInsertSVG(3, 4, 5, 2, 2).contains("<svg height=\"11.00in\" viewBox=\"0.0 0.0 23.0 11.0\" width=\"23.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"));
+    }
+
+    @Test
+    public void test_46_inInsertSVG() {
+    	// Make sure the inserts have the correct number of paths
+    	int rows = 2;
+    	int cols = 2;
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getInsertSVG(2.0,2.0,2.0, rows, cols).split("\n");
+    	int pathCount = 0;
+    	for (int i = 0; i < lines.length; i++) {
+    		if (lines[i].contains("path d=")) {
+    			pathCount++;
+    		}
+    	}
+    	// Make sure we have (rows-1) + (cols-1) paths
+    	assertEquals(pathCount, (rows-1) + (cols-1));
+    }
+
+    @Test
+    public void test_47_inInsertSVG() {
+    	// Make sure the inserts have the correct number of paths with different rows/cols values
+    	int rows = 3;
+    	int cols = 4;
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getInsertSVG(2.0,2.0,2.0, rows, cols).split("\n");
+    	int pathCount = 0;
+    	for (int i = 0; i < lines.length; i++) {
+    		if (lines[i].contains("path d=")) {
+    			pathCount++;
+    		}
+    	}
+    	// Make sure we have (rows-1) + (cols-1) paths
+    	assertEquals(pathCount, (rows-1) + (cols-1));
+    }
+
+    @Test
+    public void test_48_inInsertSVG() {
+    	// Make sure the inserts have the correct number of paths with different rows/cols values
+    	int rows = 7;
+    	int cols = 10;
+    	String lines[];
+		// Inputs random length, width, and height values
+    	lines = bm.getInsertSVG(2.0,2.0,2.0, rows, cols).split("\n");
+    	int pathCount = 0;
+    	for (int i = 0; i < lines.length; i++) {
+    		if (lines[i].contains("path d=")) {
+    			pathCount++;
+    		}
+    	}
+    	// Make sure we have (rows-1) + (cols-1) paths
+    	assertEquals(pathCount, (rows-1) + (cols-1));
+    }
+
+    // Tests for the new integer user input (used for the inserts SVG)
+    @Test
+    public void test_49_userIntInput() {
+    	// If a number entered is above the range, the line is ignored, prompting again
+    	String response = "11\n7\n";
+    	Scanner sc = new Scanner(response);
+    	assertEquals(bm.promptInteger(sc, 3, 10, false), 7);
+    	sc.close();
+    }
+
+    @Test
+    public void test_50_userIntInput() {
+    	// Make sure we will continually prompt until a good value is entered
+    	String response = "2\n11\ngar\nbage\ngarbage\n-17\n9999999\n3\n";
+    	Scanner sc = new Scanner(response);
+    	assertEquals(bm.promptInteger(sc, 3, 10, false), 3);
+    	sc.close();
+    }
 }
