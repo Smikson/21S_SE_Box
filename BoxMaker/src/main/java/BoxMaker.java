@@ -417,14 +417,14 @@ public class BoxMaker {
 			insertHeight = promptDimension(sc, 1, height);
 
 			// Prompt for the number of rows
-			System.out.println("How many rows of sections do you want? 1-5:");
+			System.out.println("How many rows of sections do you want? 2-5:");
 			System.out.print("Rows: ");
-			rows = promptInteger(sc, 1, 5);
+			rows = promptInteger(sc, 2, 5);
 
 			// Prompt for the number of columns
-			System.out.println("How many columns of sections do you want? 1-5:");
+			System.out.println("How many columns of sections do you want? 2-5:");
 			System.out.print("Columns: ");
-			cols = promptInteger(sc, 1, 5);
+			cols = promptInteger(sc, 2, 5);
 		}
 
     	// Display the chosen dimensions so the user can double check what they specified
@@ -438,7 +438,7 @@ public class BoxMaker {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("output.svg"));
 			writer.write(getSVG(length, width, height));
 			writer.close();
-			System.out.println("Done");
+			System.out.println("Box Generated");
 		}
 		// If we catch an IOException, print an error message
 		catch (IOException e) {
@@ -447,10 +447,10 @@ public class BoxMaker {
 		
 		// Write the insert String to a new SVG files (catch any IOExceptions)
 		try {
-			BufferedWriter written = new BufferedWriter(new FileWriter("insert.svg"));
+			BufferedWriter written = new BufferedWriter(new FileWriter("inserts.svg"));
 			written.write(getInsertSVG(length, width, insertHeight, rows, cols));
 			written.close();
-			System.out.println("Done");
+			System.out.println("Inserts Generated");
 		}
 		// If we catch an IOException, print an error message
 		catch (IOException e) {
