@@ -4,6 +4,7 @@ This contains instructions for how to run the program (the "Wood Wizard"). Inclu
 First, change directories to the proper file location: the maven project folder if using maven, or the folder containing the BoxMaker.java file.
 Ex:
 >>> cd BoxMakerFolder
+
 >>> ls
 BoxMaker.java
 
