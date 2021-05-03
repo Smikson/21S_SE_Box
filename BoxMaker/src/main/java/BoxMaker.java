@@ -446,15 +446,17 @@ public class BoxMaker {
 		}
 		
 		// Write the insert String to a new SVG files (catch any IOExceptions)
-		try {
-			BufferedWriter written = new BufferedWriter(new FileWriter("inserts.svg"));
-			written.write(getInsertSVG(length, width, insertHeight, rows, cols));
-			written.close();
-			System.out.println("Inserts Generated");
-		}
-		// If we catch an IOException, print an error message
-		catch (IOException e) {
-			System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");	
+		if (inserts) {
+			try {
+				BufferedWriter written = new BufferedWriter(new FileWriter("inserts.svg"));
+				written.write(getInsertSVG(length, width, insertHeight, rows, cols));
+				written.close();
+				System.out.println("Inserts Generated");
+			}
+			// If we catch an IOException, print an error message
+			catch (IOException e) {
+				System.out.println("BoxMaker Error: IOExcpetion caught in writing to SVG output file.");	
+			}
 		}
 
     }
