@@ -5,10 +5,6 @@ First, change directories to the proper file location: the maven project folder 
 Ex:
 >>> cd BoxMakerFolder
 
->>> ls
-
-BoxMaker.java
-
 
 To compile the program:
 For maven:
