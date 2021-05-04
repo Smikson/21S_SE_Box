@@ -229,7 +229,7 @@ public class BoxMaker {
 						
 		// If a single dimension is above 5 inches, use the large SVG template
 		if (length > 5 || width > 5 || height > 5) {
-			ret += "<svg height=\"55.00in\" viewBox=\"0.0 0.0 85.0 55.0\" width=\"85.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
+			ret += "<svg height=\"55.00in\" viewBox=\"0.0 0.0 101.0 55.0\" width=\"101.00in\" xmlns=\"http://www.w3.org/2000/svg\"\n"
 						+ "xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
 						+ "xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
 						+ "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
