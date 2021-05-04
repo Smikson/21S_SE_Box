@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="Layer_1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1224 792"
+	 style="enable-background:new 0 0 1224 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:288;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:58px;}
+</style>
+<g id="base">
+	<path class="st0" d="M27,27h39.6v-9h39.6v9h39.6v-9h39.6v9H225v54h9v54h-9v54h9v54h-9v54h-39.6v9h-39.6v-9h-39.6v9H66.6v-9H27v-54
+		h-9v-54h9v-54h-9V81h9L27,27"/>
+</g>
+<g id="wall1">
+	<path class="st0" d="M405,18h39.6v9h39.6v-9h39.6v9h39.6v-9H603h9v60h-9v60h9v60h-9v60h9v60h-9v60h-39.6v-9h-39.6v9h-39.6v-9h-39.6
+		v9H405h-9v-60h9v-60h-9v-60h9v-60h-9V78h9V18"/>
+</g>
+<g id="wall2">
+	<path class="st0" d="M783,18h39.6v9h39.6v-9h39.6v9h39.6v-9H981h9v60h-9v60h9v60h-9v60h9v60h-9v60h-39.6v-9h-39.6v9h-39.6v-9h-39.6
+		v9H783h-9v-60h9v-60h-9v-60h9v-60h-9V78h9V18"/>
+</g>
+<g id="wall3">
+	<path class="st0" d="M27,396h54v9h54v-9h54v9h54v-9h54h9v60h-9v60h9v60h-9v60h9v60h-9v60h-54v-9h-54v9h-54v-9H81v9H27h-9v-60h9v-60
+		h-9v-60h9v-60h-9v-60h9V396"/>
+</g>
+<g id="wall4">
+	<path class="st0" d="M405,396h54v9h54v-9h54v9h54v-9h54h9v60h-9v60h9v60h-9v60h9v60h-9v60h-54v-9h-54v9h-54v-9h-54v9h-54h-9v-60h9
+		v-60h-9v-60h9v-60h-9v-60h9V396"/>
+</g>
+<g id="top">
+	<path class="st0" d="M783,405h39.6v-9h39.6v9h39.6v-9h39.6v9H981v54h9v54h-9v54h9v54h-9v54h-39.6v9h-39.6v-9h-39.6v9h-39.6v-9H783
+		v-54h-9v-54h9v-54h-9v-54h9V405"/>
+</g>
+<text transform="matrix(0.8561 0 0 1 80.6123 175.1318)" class="st1 st2">Top</text>
+<text transform="matrix(0.6293 0 0 1 826.1621 550.1318)" class="st1 st2">Bottom </text>
+<text transform="matrix(1 0 0 1 429.4688 205)" class="st1 st2">Side A</text>
+<text transform="matrix(1.0677 0 0 1 801 205)" class="st1 st2">Side A</text>
+<text transform="matrix(1 0 0 1 93.5771 582.8867)" class="st1 st2">Side B </text>
+<text transform="matrix(0.5847 0 0 1 495.6895 582.25)" class="st1 st2">Side B </text>
+</svg>
